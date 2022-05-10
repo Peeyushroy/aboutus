@@ -28,6 +28,9 @@ const Home: NextPage = () => {
           <li>
             <Link href="/csr">Client Side Rendering</Link>
           </li>
+          <li>
+            <Link href="/hybrid">Hybrid Rendering</Link>
+          </li>
         </ul>
       </main>
 
