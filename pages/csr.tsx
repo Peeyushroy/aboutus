@@ -3,6 +3,7 @@ import React from "react";
 
 interface dataJson {
     name: string;
+    content: string
 }
 
 const Csr = () => {
@@ -14,7 +15,7 @@ const Csr = () => {
         setIsLoading(true);
         try {
             const data = await fetch(
-                "http://localhost:3000/api/data"
+                "http://localhost:3000/api/csrdata"
             );
             const json = await data.json();
             setData(json);
@@ -43,7 +44,7 @@ const Csr = () => {
                 {data && !isError && (
                     <>
                         <h2>{data.name}</h2>
-                        <p>This page is Rendering with CSR (client Side Rendering)</p>
+                        <p>{data.content}</p>
                     </>
                 )}
             </div>

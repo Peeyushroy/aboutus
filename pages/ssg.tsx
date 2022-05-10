@@ -2,17 +2,18 @@ import Head from "next/head";
 
 interface ssgProps {
   name: string;
+  content: string
 }
 
-const ssg = ({ name }: ssgProps) => {
+const ssg = ({ name, content }: ssgProps) => {
   return (
     <div>
       <Head>
-        <title>Static Site Generation - {name}</title>
+        <title>{name}</title>
       </Head>
       <div className="content">
         <h2>{name}</h2>
-        <p>This page is Rendering with SSG (Static Site Generation)</p>
+        <p>{content}</p>
       </div>
     </div>
   );
@@ -20,13 +21,14 @@ const ssg = ({ name }: ssgProps) => {
 
 export async function getStaticProps() {
   const data = await fetch(
-    "http://localhost:3000/api/data"
+    "http://localhost:3000/api/ssgdata"
   );
   const json = await data.json();
 
   return {
     props: {
       name: json.name,
+      content: json.content
     },
   };
 }

@@ -2,18 +2,19 @@ import Head from "next/head";
 
 interface isrProps {
   name: string;
+  content: string
 }
 
-const isr = ({ name }: isrProps) => {
+const isr = ({ name, content }: isrProps) => {
   return (
     <div>
       <Head>
-        <title>Inceremental Site Generation - {name}</title>
+        <title>{name}</title>
       </Head>
       <div className="content">
         <h2>{name}</h2>
         <p>
-          This page is Rendering with ISR (Inceremental Static Regeneration)
+          {content}
         </p>
       </div>
     </div>
@@ -22,13 +23,14 @@ const isr = ({ name }: isrProps) => {
 
 export async function getStaticProps() {
   const data = await fetch(
-    "http://localhost:3000/api/data"
+    "http://localhost:3000/api/isrdata"
   );
   const json = await data.json();
 
   return {
     props: {
       name: json.name,
+      content: json.content
     },
     revalidate: 60,
   };
