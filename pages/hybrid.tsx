@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import Csr from "./csr";
 
 interface ssgProps {
     name: string;
@@ -12,7 +11,7 @@ interface dataJson {
     content: string
 }
 
-const ssg = ({ name, content }: ssgProps) => {
+const hybrid = ({ name, content }: ssgProps) => {
     const [data, setData] = React.useState<dataJson | null>(null);
 
     const getAllData = async () => {
@@ -65,4 +64,4 @@ export async function getStaticProps() {
     };
 }
 
-export default ssg;
+export default hybrid;
